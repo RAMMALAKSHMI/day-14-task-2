@@ -1,0 +1,146 @@
+<link rel="stylesheet" href="studentform.css" />
+<centre>
+  <form>
+    <table>
+      <tr>
+        <td><label>First Name</label></td>
+        <td><input type="text" id="fname" /></td>
+      </tr>
+
+      <br /><br />
+
+      <tr>
+        <td><label>Last Name</label></td>
+        <td><input type="text" id="lname" /></td>
+      </tr>
+
+      <br /><br />
+
+      <tr>
+        <td><label>Address</label></td>
+        <td><textarea id="address" rows="4" cols="21"></textarea></td>
+      </tr>
+
+      <br /><br />
+
+      <tr>
+        <td><label>Pincode</label></td>
+        <td><input type="number" id="pincode" maxlength="6" /></td>
+      </tr>
+
+      <br /><br />
+
+      <tr>
+        <td><label>Gender</label></td>
+        <td>
+          <input type="radio" id="male" name="gender" value="Male" />
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="Female" />
+          <label for="female">Female</label>
+        </td>
+      </tr>
+
+      <br /><br />
+
+      <tr>
+        <td><label>Food choice</label></td>
+        <td>
+          <select name="Food" id="food">
+            <option>South Indian</option>
+            <option>Chinese</option>
+            <option>Burmese</option>
+            <option>North Indian</option>
+            <option>Street Food</option>
+          </select>
+        </td>
+      </tr>
+
+      <br /><br />
+
+      <tr>
+        <td><label>Country</label></td>
+        <td><input type="text" id="country" /></td>
+      </tr>
+
+      <br /><br />
+
+      <tr>
+        <td colspan="2"><button onclick="addinfo(event)">Save</button></td>
+      </tr>
+    </table>
+  </form>
+
+  <br /><br /><br />
+
+  <table id="output" border="1">
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Address</td>
+      <td>Pincode</td>
+      <td>Gender</td>
+      <td>Food Choice</td>
+      <td>Country</td>
+      <td>Action</td>
+    </tr>
+  </table>
+</centre>
+
+<script>
+  function addinfo(event) {
+    var fnameInput = document.getElementById("fname");
+    var fname = fnameInput.value;
+    var lnameInput = document.getElementById("lname");
+    var lname = lnameInput.value;
+    var address = document.getElementById("address");
+    var pincode = document.getElementById("pincode");
+    var gendermale = document.getElementById("male");
+    var genderfemale = document.getElementById("female");
+    var food = document.getElementById("food");
+    var country = document.getElementById("country");
+    var output = document.getElementById("output");
+
+    event.preventDefault();
+
+    var outputrow = document.createElement("tr");
+    output.append(outputrow);
+
+    var outputcolfname = document.createElement("td");
+    outputcolfname.textContent = fname;
+    outputrow.append(outputcolfname);
+
+    var outputcollname = document.createElement("td");
+    outputcollname.textContent = lname;
+    outputrow.append(outputcollname);
+
+    var outputcoladdress = document.createElement("td");
+    outputcoladdress.style.maxHeight = "40px";
+    outputcoladdress.style.minWidth = "30px";
+    outputcoladdress.textContent = address.value;
+    outputrow.append(outputcoladdress);
+
+    var outputcolpincode = document.createElement("td");
+    outputcolpincode.textContent = pincode.value;
+    outputrow.append(outputcolpincode);
+
+    var outputcolgender = document.createElement("td");
+    outputcolgender.textContent = gendermale.checked ? "Male" : "Female";
+    outputrow.append(outputcolgender);
+
+    var outputcolfood = document.createElement("td");
+    outputcolfood.textContent = selectedFoodOptions.join(", ");
+    outputrow.append(outputcolfood);
+
+    var outputcolcountry = document.createElement("td");
+    outputcolcountry.textContent = country.value;
+    outputrow.append(outputcolcountry);
+
+    var outputcoldel = document.createElement("button");
+    outputcoldel.textContent = "Delete";
+    outputrow.append(outputcoldel);
+    outputcoldel.onclick = function () {
+      outputrow.remove();
+    };
+    document.querySelector("form").reset();
+  }
+</script>

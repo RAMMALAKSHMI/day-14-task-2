@@ -1,0 +1,26 @@
+*{ 
+    background-color: beige;
+    text-align: center;
+    
+}
+
+form{
+    
+    width: 50%;
+    padding-left: 42%;
+    text-align: center;
+    
+}
+button{
+    width: 100%;
+}
+
+#output{
+    width: 50%;
+    margin: 20px auto;
+    text-align: left;
+    
+}
+#address{
+    border: 2px solid black;
+}
